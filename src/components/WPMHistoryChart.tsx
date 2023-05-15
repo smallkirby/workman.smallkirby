@@ -1,6 +1,11 @@
 import { ResponsiveLine } from '@nivo/line';
+import typingBaselines from '@/data/baseline';
 import typingHistory from '@/data/history';
 import { TypingData } from '@/types/TypingData';
+
+const baseline = typingBaselines.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+)[0];
 
 const history2wpm = (history: TypingData[]) => {
   return {
@@ -30,16 +35,26 @@ export default function WPMHistoryChart() {
       axisBottom={{
         format: '%m/%d %H:%M',
       }}
-      yScale={{ type: 'linear', min: 0 }}
+      yScale={{ type: 'linear', min: 0, max: baseline.wpm + 50 }}
       yFormat={(value) => `${value}%`}
-      enableArea={true}
+      markers={[
+        {
+          axis: 'y',
+          lineStyle: { stroke: '#458558', strokeWidth: 2 },
+          legend: 'QWERTY Baseline',
+          legendPosition: 'top-left',
+          value: typingBaselines.sort(
+              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+          )[0].wpm,
+        },
+      ]}
       pointSize={10}
       enablePointLabel={false}
       enableGridX={true}
       enableGridY={true}
       useMesh={true}
       isInteractive={true}
-      margin={{ top: 10, right: 10, bottom: 50, left: 50 }}
+      margin={{ top: 20, right: 10, bottom: 50, left: 50 }}
     />
   );
 }

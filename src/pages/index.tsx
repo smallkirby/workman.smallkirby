@@ -10,11 +10,17 @@ export default function Home() {
       <div className="text-center mt-2 mb-8">
         smallkirby can change its keyboard layout cuz they does not work
       </div>
-      <Space direction="vertical" size="large">
-        <LayoutDescription />
-        <WPMHistory />
-        <AccuracyHistory />
-      </Space>
+      <div className="mx-auto w-full">
+        <Space
+          direction="vertical"
+          size="large"
+          className="mx-auto md:w-4/5 flex"
+        >
+          <LayoutDescription />
+          <WPMHistory />
+          <AccuracyHistory />
+        </Space>
+      </div>
     </MainLayout>
   );
 }

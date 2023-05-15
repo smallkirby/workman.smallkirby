@@ -1,10 +1,11 @@
 import { ResponsiveLine } from '@nivo/line';
+import typingBaselines from '@/data/baseline';
 import typingHistory from '@/data/history';
 import { TypingData } from '@/types/TypingData';
 
 const history2accuracy = (history: TypingData[]) => {
   return {
-    id: 'Accuracy',
+    id: 'history',
     data: history.map((data) => {
       return {
         x: data.date,
@@ -30,16 +31,26 @@ export default function AccuracyHistoryChart() {
       axisBottom={{
         format: '%m/%d %H:%M',
       }}
-      yScale={{ type: 'linear', min: 0, max: 100 }}
+      yScale={{ type: 'linear', min: 60, max: 100 }}
       yFormat={(value) => `${value}%`}
-      enableArea={true}
+      markers={[
+        {
+          axis: 'y',
+          lineStyle: { stroke: '#689D6A', strokeWidth: 2 },
+          legend: 'QWERTY Baseline',
+          legendPosition: 'top-left',
+          value: typingBaselines.sort(
+              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+          )[0].accuracy,
+        },
+      ]}
       pointSize={10}
       enablePointLabel={false}
       enableGridX={true}
       enableGridY={true}
       useMesh={true}
       isInteractive={true}
-      margin={{ top: 10, right: 10, bottom: 50, left: 50 }}
+      margin={{ top: 20, right: 10, bottom: 30, left: 50 }}
     />
   );
 }
