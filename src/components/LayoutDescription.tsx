@@ -15,12 +15,12 @@ export default function LayoutDescription() {
         </div>
       }
     >
-      <div className="flex">
+      <div className="flex md:flex-row flex-col justify-center items-center">
         <Image
           src="/images/workman-layout.png"
           alt="workman layout"
-          width="40%"
-          className="rounded-lg shadow-lg"
+          width="80%"
+          className="rounded-lg shadow-lg mb-4 w-full"
         />
         <div className="ml-10">
           <ul className="list-disc">
