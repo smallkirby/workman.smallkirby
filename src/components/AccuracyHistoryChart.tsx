@@ -51,6 +51,19 @@ export default function AccuracyHistoryChart() {
       useMesh={true}
       isInteractive={true}
       margin={{ top: 20, right: 10, bottom: 30, left: 50 }}
+      tooltip={({ point }) => {
+        return (
+          <div
+            className="rounded-md bg-white p-2 border-[1px]
+          border-gray-200 shadow-md"
+          >
+            <div>{point.data.xFormatted}</div>
+            <div className="text-center">
+              <span className="font-bold">{point.data.yFormatted}</span>
+            </div>
+          </div>
+        );
+      }}
     />
   );
 }
