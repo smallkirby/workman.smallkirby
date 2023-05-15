@@ -40,7 +40,7 @@ export default function AccuracyHistoryChart() {
           legend: 'QWERTY Baseline',
           legendPosition: 'top-left',
           value: typingBaselines.sort(
-              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
           )[0].accuracy,
         },
       ]}

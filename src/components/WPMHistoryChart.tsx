@@ -4,7 +4,7 @@ import typingHistory from '@/data/history';
 import { TypingData } from '@/types/TypingData';
 
 const baseline = typingBaselines.sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
 )[0];
 
 const history2wpm = (history: TypingData[]) => {
@@ -44,7 +44,7 @@ export default function WPMHistoryChart() {
           legend: 'QWERTY Baseline',
           legendPosition: 'top-left',
           value: typingBaselines.sort(
-              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
           )[0].wpm,
         },
       ]}
