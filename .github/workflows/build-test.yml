@@ -1,0 +1,46 @@
+name: build & test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: Cache node_modules 📦
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ubuntu-latest-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ubuntu-latest-node-
+
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run linter 👀
+        run: npm run lint
+
+      - name: Run build 🏗️
+        run: npm run build
+
+      - name: Run test 🧪
+        run: npm run test
