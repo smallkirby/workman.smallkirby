@@ -34,7 +34,7 @@ jobs:
             ubuntu-latest-node-
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci --prefer-offline --no-audit
+        run: npm ci --no-audit
 
       - name: Run linter 👀
         run: npm run lint
