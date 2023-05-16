@@ -6,9 +6,9 @@ RUN npm ci
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-ARG NEXT_PUBLIC_FIREBASE_APIKEY
-
-RUN npm run build
+RUN --mount=type=secret,id=NEXT_PUBLIC_FIREBASE_APIKEY \
+  NEXT_PUBLIC_FIREBASE_APIKEY="$(cat /run/secrets/NEXT_PUBLIC_FIREBASE_APIKEY)" \
+    npm run build
 
 FROM node:18-alpine AS runner
 WORKDIR /app
