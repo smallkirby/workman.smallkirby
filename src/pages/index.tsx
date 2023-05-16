@@ -7,8 +7,12 @@ import { Space } from 'antd';
 export default function Home() {
   return (
     <MainLayout>
-      <div className="text-center mt-2 mb-8">
-        smallkirby can change its keyboard layout cuz they does not work
+      <div
+        className="text-center mt-2 mb-8 flex
+        flex-col md:flex-row justify-center"
+      >
+        <span>smallkirby can change its keyboard layout</span>
+        <span className="ml-1">cuz they does not work</span>
       </div>
       <div className="mx-auto w-full">
         <Space

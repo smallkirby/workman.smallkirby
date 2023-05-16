@@ -18,6 +18,7 @@ const FirebaseAuthProvider = ({ children }: Props) => {
   const auth = getFirebaseAuth();
 
   useEffect(() => {
+    setUser(undefined);
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser({
@@ -26,6 +27,8 @@ const FirebaseAuthProvider = ({ children }: Props) => {
           photoUrl: user.photoURL,
           providerId: user.providerId,
         });
+      } else {
+        setUser(null);
       }
     });
     return () => unsubscribe();
@@ -36,6 +39,11 @@ const FirebaseAuthProvider = ({ children }: Props) => {
       {children}
     </FirebaseAuthContext.Provider>
   );
+};
+
+export const logout = async () => {
+  const auth = getFirebaseAuth();
+  await auth.signOut();
 };
 
 export const getFirebaseAuth = () => getAuth(getFirebaseApp());
