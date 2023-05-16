@@ -1,7 +1,12 @@
 import { getFirebaseAuth } from '@/lib/firebase/auth';
 import { Button, Card, Image } from 'antd';
-import { GithubAuthProvider, signInWithRedirect } from 'firebase/auth';
+import {
+  GithubAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from 'firebase/auth';
 import { useCallback, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 
 export default function LoginBox() {
   const [isLoading, setLoading] = useState(false);
@@ -10,15 +15,20 @@ export default function LoginBox() {
     setLoading(true);
 
     const auth = getFirebaseAuth();
-    await signInWithRedirect(auth, new GithubAuthProvider());
+    if (isMobile) {
+      // Somehow, login seems to fail on mobile with redirect method.
+      await signInWithPopup(auth, new GithubAuthProvider());
+    } else {
+      await signInWithRedirect(auth, new GithubAuthProvider());
+    }
   }, []);
 
   return (
     <Card
       style={{
-        width: '400px',
-        margin: 'auto',
+        margin: '10',
       }}
+      className="mx-4 md:mx-auto md:w-96"
     >
       <div className="my-2">
         <Image
