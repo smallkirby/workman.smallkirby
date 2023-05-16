@@ -33,4 +33,6 @@ jobs:
         run: npm run lint
 
       - name: Run build 🏗️
+        env:
+          NEXT_PUBLIC_FIREBASE_APIKEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_APIKEY }}
         run: npm run build
