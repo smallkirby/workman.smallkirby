@@ -14,7 +14,7 @@ export default function UserBadge() {
   const items: MenuProps['items'] = [
     {
       key: 'admin',
-      label: 'Go Admin Page',
+      label: 'Admin Page',
       icon: <KeyOutlined />,
     },
   ];
@@ -49,7 +49,11 @@ export default function UserBadge() {
                 size={40}
                 icon={
                   user && user.photoUrl ? (
-                    <Image src={user.photoUrl} alt={user.displayName || ''} />
+                    <Image
+                      src={user.photoUrl}
+                      alt={user.displayName || ''}
+                      preview={false}
+                    />
                   ) : (
                     <UserOutlined />
                   )
