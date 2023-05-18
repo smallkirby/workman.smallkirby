@@ -1,8 +1,13 @@
 import { Card } from 'antd';
 import { FastForwardOutlined } from '@ant-design/icons';
 import WPMHistoryChart from './WPMHistoryChart';
+import { TypingData } from '@/types/TypingData';
 
-export default function WPMHistory() {
+type Props = {
+  histories: TypingData[] | null;
+};
+
+export default function WPMHistory({ histories }: Props) {
   return (
     <Card
       title={
@@ -17,7 +22,7 @@ export default function WPMHistory() {
       }
     >
       <div className="w-full h-80">
-        <WPMHistoryChart />
+        <WPMHistoryChart histories={histories} />
       </div>
     </Card>
   );

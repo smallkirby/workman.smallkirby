@@ -7,6 +7,11 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    match /histories/{pid} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // Default
     match /{document=**} {
       allow read, write: if false;

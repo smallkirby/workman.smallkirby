@@ -4,11 +4,11 @@ import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 
 type Props = {
-  histories: TypingData[];
-  platforms: TypingTheme[];
+  histories: TypingData[] | null;
+  platforms: TypingTheme[] | null;
 };
 
-export default function HistoriesPlatform({ histories, platforms }: Props) {
+export default function HistoriesPanel({ histories, platforms }: Props) {
   const columns: ColumnsType<TypingData> = [
     {
       title: 'Date',
@@ -23,7 +23,7 @@ export default function HistoriesPlatform({ histories, platforms }: Props) {
       dataIndex: 'themeId',
       key: 'platform',
       render: (platform: string) => {
-        const theme = platforms.find((elem) => elem.id === platform);
+        const theme = platforms?.find((elem) => elem.id === platform);
         return <div>{theme?.name ?? '(unknown)'}</div>;
       },
     },
@@ -57,7 +57,11 @@ export default function HistoriesPlatform({ histories, platforms }: Props) {
       </div>
 
       <div>
-        <Table columns={columns} dataSource={histories} />
+        <Table
+          columns={columns}
+          dataSource={histories ?? []}
+          loading={histories == null}
+        />
       </div>
     </>
   );

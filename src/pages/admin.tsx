@@ -1,19 +1,37 @@
-import HistoriesPlatform from '@/components/HistoriesPlatform';
+import { AlertContext } from '@/components/AlertProvider';
+import HistoriesPanel from '@/components/HistoriesPanel';
 import PlatformsPanel from '@/components/PlatformsPanel';
-import typingHistory from '@/data/history';
 import MainLayout from '@/layouts/MainLayout';
-import { getPlatforms } from '@/lib/firebase/store';
-import { TypingTheme } from '@/types/TypingData';
+import {
+  PrettyFirebaseError,
+  getHistories,
+  getPlatforms,
+} from '@/lib/firebase/store';
+import { TypingData, TypingTheme } from '@/types/TypingData';
 import { Tabs } from 'antd';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export default function Admin() {
-  const [platforms, setPlatforms] = useState<TypingTheme[]>([]);
+  const { setAlert } = useContext(AlertContext);
+  const [histories, setHistories] = useState<TypingData[] | null>(null);
+  const [platforms, setPlatforms] = useState<TypingTheme[] | null>(null);
 
   useEffect(() => {
     getPlatforms().then((pfs) => {
-      setPlatforms(pfs);
+      if (pfs instanceof PrettyFirebaseError) {
+        setAlert('Error while fetching platforms', pfs.message, 'error');
+      } else {
+        setPlatforms(pfs);
+      }
     });
+    getHistories().then((hists) => {
+      if (hists instanceof PrettyFirebaseError) {
+        setAlert('Error while fetching histories', hists.message, 'error');
+      } else {
+        setHistories(hists);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -29,10 +47,12 @@ export default function Admin() {
             label: 'Histories',
             key: 'histories',
             children: (
-              <HistoriesPlatform
-                histories={typingHistory.sort((a, b) => {
-                  return a.date > b.date ? -1 : 1;
-                })}
+              <HistoriesPanel
+                histories={
+                  histories?.sort((a, b) => {
+                    return a.date > b.date ? -1 : 1;
+                  }) ?? null
+                }
                 platforms={platforms}
               />
             ),

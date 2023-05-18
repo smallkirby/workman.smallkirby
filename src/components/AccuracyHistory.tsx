@@ -1,8 +1,13 @@
 import { Card } from 'antd';
 import { BugOutlined } from '@ant-design/icons';
 import AccuracyHistoryChart from './AccuracyHistoryChart';
+import { TypingData } from '@/types/TypingData';
 
-export default function AccuracyHistory() {
+type Props = {
+  histories: TypingData[] | null;
+};
+
+export default function AccuracyHistory({ histories }: Props) {
   return (
     <Card
       title={
@@ -15,7 +20,7 @@ export default function AccuracyHistory() {
       }
     >
       <div className="w-full h-80">
-        <AccuracyHistoryChart />
+        <AccuracyHistoryChart histories={histories} />
       </div>
     </Card>
   );

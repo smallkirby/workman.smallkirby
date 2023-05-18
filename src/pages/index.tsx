@@ -3,8 +3,25 @@ import LayoutDescription from '@/components/LayoutDescription';
 import WPMHistory from '@/components/WPMHistory';
 import MainLayout from '@/layouts/MainLayout';
 import { Space } from 'antd';
+import { TypingData } from '@/types/TypingData';
+import { useContext, useEffect, useState } from 'react';
+import { PrettyFirebaseError, getHistories } from '@/lib/firebase/store';
+import { AlertContext } from '@/components/AlertProvider';
 
 export default function Home() {
+  const [histories, setHistories] = useState<TypingData[] | null>(null);
+  const { setAlert } = useContext(AlertContext);
+
+  useEffect(() => {
+    getHistories().then((hists) => {
+      if (hists instanceof PrettyFirebaseError) {
+        setAlert('Error while fetching histories', hists.message, 'error');
+      } else {
+        setHistories(hists);
+      }
+    });
+  }, [setAlert]);
+
   return (
     <MainLayout>
       <div
@@ -21,8 +38,8 @@ export default function Home() {
           className="mx-auto md:w-4/5 flex"
         >
           <LayoutDescription />
-          <WPMHistory />
-          <AccuracyHistory />
+          <WPMHistory histories={histories} />
+          <AccuracyHistory histories={histories} />
         </Space>
       </div>
     </MainLayout>

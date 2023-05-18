@@ -2,7 +2,7 @@ import type { TypingTheme } from '@/types/TypingData';
 import PlatformCard from './PlatformCard';
 
 type Props = {
-  themes: TypingTheme[];
+  themes: TypingTheme[] | null;
 };
 
 export default function PlatformsPanel({ themes }: Props) {
@@ -15,15 +15,19 @@ export default function PlatformsPanel({ themes }: Props) {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center">
-        {themes.map((elem, ix) => {
-          return (
-            <div className="mx-4 my-2 md:my-4 w-full md:w-2/5" key={ix}>
-              <PlatformCard theme={elem} />
-            </div>
-          );
-        })}
-      </div>
+      {themes === null ? (
+        <div>hoge</div>
+      ) : (
+        <div className="flex flex-wrap justify-center">
+          {themes.map((elem, ix) => {
+            return (
+              <div className="mx-4 my-2 md:my-4 w-full md:w-2/5" key={ix}>
+                <PlatformCard theme={elem} />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }
