@@ -22,6 +22,7 @@
     "@types/react-dom": "18.2.4",
     "antd": "^5.5.0",
     "common-tags": "^1.8.2",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
