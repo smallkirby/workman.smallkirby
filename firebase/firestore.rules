@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /platforms/{pid} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

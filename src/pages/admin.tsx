@@ -1,10 +1,21 @@
 import HistoriesPlatform from '@/components/HistoriesPlatform';
 import PlatformsPanel from '@/components/PlatformsPanel';
-import typingHistory, { typingThemes } from '@/data/history';
+import typingHistory from '@/data/history';
 import MainLayout from '@/layouts/MainLayout';
+import { getPlatforms } from '@/lib/firebase/store';
+import { TypingTheme } from '@/types/TypingData';
 import { Tabs } from 'antd';
+import { useEffect, useState } from 'react';
 
 export default function Admin() {
+  const [platforms, setPlatforms] = useState<TypingTheme[]>([]);
+
+  useEffect(() => {
+    getPlatforms().then((pfs) => {
+      setPlatforms(pfs);
+    });
+  }, []);
+
   return (
     <MainLayout>
       <Tabs
@@ -22,14 +33,14 @@ export default function Admin() {
                 histories={typingHistory.sort((a, b) => {
                   return a.date > b.date ? -1 : 1;
                 })}
-                platforms={typingThemes}
+                platforms={platforms}
               />
             ),
           },
           {
             label: 'Platforms',
             key: 'platforms',
-            children: <PlatformsPanel themes={typingThemes} />,
+            children: <PlatformsPanel themes={platforms} />,
           },
         ]}
         style={{
