@@ -1,12 +1,15 @@
 import { TypingData, TypingTheme } from '@/types/TypingData';
+import { stripIndent } from 'common-tags';
 
 export const typingThemes: TypingTheme[] = [
   {
     id: 'ET-KENPOU',
     name: 'e-typing 日本国憲法',
     url: 'https://www.e-typing.ne.jp/roma/variety/long.asp',
-    description:
-      'The preamble to Japanese Constitution. Practice for Japanese typing.',
+    description: stripIndent`
+        The preamble to Japanese Constitution. Practice for Japanese typing.
+        It has approximately 1500 keys.
+      `,
   },
 ];
 

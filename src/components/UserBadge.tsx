@@ -16,6 +16,7 @@ export default function UserBadge() {
       key: 'admin',
       label: 'Admin Page',
       icon: <KeyOutlined />,
+      onClick: () => router.push('/admin'),
     },
   ];
 
