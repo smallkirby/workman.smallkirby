@@ -1,7 +1,16 @@
 import { ExperimentOutlined } from '@ant-design/icons';
 import { Card, Image } from 'antd';
+import { useEffect, useState } from 'react';
 
 export default function LayoutDescription() {
+  const [imageSize, setImageSize] = useState('50%');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setImageSize(window.innerWidth < 768 ? '70%' : '40%');
+    }
+  }, []);
+
   return (
     <Card
       title={
@@ -14,15 +23,19 @@ export default function LayoutDescription() {
           <div>Workman Layout</div>
         </div>
       }
+      bodyStyle={{ padding: '0px' }}
     >
-      <div className="flex md:flex-row flex-col justify-center items-center">
+      <div
+        className="flex md:flex-row flex-col
+        justify-center items-center mt-6 md:m-4"
+      >
         <Image
           src="/images/workman-layout.png"
           alt="workman layout"
-          width="80%"
           className="rounded-lg shadow-lg mb-4 w-full"
+          width={imageSize}
         />
-        <div className="ml-10">
+        <div className="mr-4 md:ml-10">
           <ul className="list-disc">
             <li>
               <a href="https://workmanlayout.org/" target="_blank">

@@ -6,7 +6,7 @@ export default function Title() {
   return (
     <button
       className="mx-auto text-center font-cute
-      border-none bg-inherit cursor-pointer py-0"
+      border-none bg-inherit cursor-pointer py-0 text-black"
       onClick={() => router.push('/')}
     >
       <h1 className="text-6xl md:text-8xl m-0 p-4">

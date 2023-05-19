@@ -81,8 +81,8 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
         </div>
       </div>
 
-      <div>
-        <Space wrap size="large">
+      <div className="w-full">
+        <Space wrap className="w-full flex justify-center md:block">
           <Button
             icon={<PlusCircleOutlined />}
             className="mb-3"
@@ -101,6 +101,8 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
           columns={columns}
           dataSource={histories ?? []}
           loading={histories == null}
+          size="large"
+          className="w-full"
         />
       </div>
     </>
