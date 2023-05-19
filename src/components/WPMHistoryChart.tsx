@@ -2,14 +2,23 @@ import { ResponsiveLine } from '@nivo/line';
 import typingBaselines from '@/data/baseline';
 import { TypingData } from '@/types/TypingData';
 import { Spin } from 'antd';
+import { useEffect, useState } from 'react';
 
 const baseline = typingBaselines.sort(
   (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
 )[0];
 
-const history2wpm = (history: TypingData[]) => {
+type WPMData = {
+  id: 'wpm';
+  data: {
+    x: string;
+    y: number;
+  }[];
+};
+
+const history2wpm = (history: TypingData[]): WPMData => {
   return {
-    id: 'Accuracy',
+    id: 'wpm',
     data: history.map((data) => {
       return {
         x: data.date,
@@ -24,9 +33,20 @@ type Props = {
 };
 
 export default function WPMHistoryChart({ histories }: Props) {
+  const [dataHistories, setDataHistories] = useState<WPMData | null>(null);
+
+  useEffect(() => {
+    if (histories !== null) {
+      const sortedHistories = histories?.sort((a, b) => {
+        return a.date > b.date ? -1 : 1;
+      });
+      setDataHistories(history2wpm(sortedHistories));
+    }
+  }, [histories]);
+
   return (
     <>
-      {histories === null ? (
+      {dataHistories === null ? (
         <Spin
           tip="Loading..."
           size="large"
@@ -36,7 +56,7 @@ export default function WPMHistoryChart({ histories }: Props) {
         <ResponsiveLine
           animate={true}
           curve="monotoneX"
-          data={[history2wpm(histories)]}
+          data={[dataHistories]}
           xScale={{
             type: 'time',
             format: '%Y-%m-%dT%H:%M:%S.%L%Z',

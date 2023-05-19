@@ -2,10 +2,19 @@ import { ResponsiveLine } from '@nivo/line';
 import typingBaselines from '@/data/baseline';
 import { TypingData } from '@/types/TypingData';
 import { Spin } from 'antd';
+import { useEffect, useState } from 'react';
 
-const history2accuracy = (history: TypingData[]) => {
+type AccuracyData = {
+  id: 'accuracy';
+  data: {
+    x: string;
+    y: number;
+  }[];
+};
+
+const history2accuracy = (history: TypingData[]): AccuracyData => {
   return {
-    id: 'history',
+    id: 'accuracy',
     data: history.map((data) => {
       return {
         x: data.date,
@@ -20,9 +29,20 @@ type Props = {
 };
 
 export default function AccuracyHistoryChart({ histories }: Props) {
+  const [dataHistories, setDataHistories] = useState<AccuracyData | null>(null);
+
+  useEffect(() => {
+    if (histories !== null) {
+      const sortedHistories = histories?.sort((a, b) => {
+        return a.date > b.date ? -1 : 1;
+      });
+      setDataHistories(history2accuracy(sortedHistories));
+    }
+  }, [histories]);
+
   return (
     <>
-      {histories === null ? (
+      {dataHistories === null ? (
         <Spin
           tip="Loading..."
           size="large"
@@ -32,7 +52,7 @@ export default function AccuracyHistoryChart({ histories }: Props) {
         <ResponsiveLine
           animate={true}
           curve="monotoneX"
-          data={[history2accuracy(histories)]}
+          data={[dataHistories]}
           xScale={{
             type: 'time',
             format: '%Y-%m-%dT%H:%M:%S.%L%Z',
