@@ -42,6 +42,7 @@ export default function AccuracyHistoryChart({ histories }: Props) {
           xFormat={'time:%Y-%m-%d %H:%M:%S'}
           axisBottom={{
             format: '%m/%d %H:%M',
+            tickRotation: -45,
           }}
           yScale={{ type: 'linear', min: 60, max: 100 }}
           yFormat={(value) => `${value}%`}
@@ -63,7 +64,7 @@ export default function AccuracyHistoryChart({ histories }: Props) {
           enableGridY={true}
           useMesh={true}
           isInteractive={true}
-          margin={{ top: 20, right: 10, bottom: 30, left: 50 }}
+          margin={{ top: 20, right: 10, bottom: 70, left: 50 }}
           tooltip={({ point }) => {
             return (
               <div

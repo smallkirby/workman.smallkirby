@@ -20,7 +20,7 @@ export default function AccuracyHistory({ histories }: Props) {
       }
       bodyStyle={{ padding: '0px' }}
     >
-      <div className="h-80 md:my-8 md:mx-4">
+      <div className="h-96 md:my-8 md:mx-4">
         <AccuracyHistoryChart histories={histories} />
       </div>
     </Card>

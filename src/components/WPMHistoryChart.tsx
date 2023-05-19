@@ -46,6 +46,7 @@ export default function WPMHistoryChart({ histories }: Props) {
           xFormat={'time:%Y-%m-%d %H:%M:%S'}
           axisBottom={{
             format: '%m/%d %H:%M',
+            tickRotation: -45,
           }}
           yScale={{ type: 'linear', min: 0, max: baseline.wpm + 50 }}
           yFormat={(value) => `${value}%`}
@@ -67,7 +68,7 @@ export default function WPMHistoryChart({ histories }: Props) {
           enableGridY={true}
           useMesh={true}
           isInteractive={true}
-          margin={{ top: 20, right: 10, bottom: 50, left: 50 }}
+          margin={{ top: 20, right: 10, bottom: 70, left: 50 }}
           tooltip={({ point }) => {
             return (
               <div

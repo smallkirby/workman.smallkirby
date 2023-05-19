@@ -22,7 +22,7 @@ export default function WPMHistory({ histories }: Props) {
       }
       bodyStyle={{ padding: '0px' }}
     >
-      <div className="h-80 md:my-8 md:mx-4">
+      <div className="h-96 md:my-8 md:mx-4">
         <WPMHistoryChart histories={histories} />
       </div>
     </Card>
