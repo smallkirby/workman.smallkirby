@@ -1,7 +1,14 @@
 import type { TypingData, TypingTheme } from '@/types/TypingData';
-import { Table } from 'antd';
+import {
+  DeleteOutlined,
+  EditOutlined,
+  PlusCircleOutlined,
+} from '@ant-design/icons';
+import { Button, Space, Table, Tooltip } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
+import HistoryCreateModal from './HistoryCreateModal';
+import { useState } from 'react';
 
 type Props = {
   histories: TypingData[] | null;
@@ -9,6 +16,8 @@ type Props = {
 };
 
 export default function HistoriesPanel({ histories, platforms }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const columns: ColumnsType<TypingData> = [
     {
       title: 'Date',
@@ -45,6 +54,22 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
       },
       align: 'right',
     },
+    {
+      title: '',
+      key: 'action',
+      render: () => {
+        return (
+          <Space wrap>
+            <Tooltip placement="top" title="Edit entry.">
+              <Button icon={<EditOutlined />}></Button>
+            </Tooltip>
+            <Tooltip placement="top" title="Remove entry.">
+              <Button icon={<DeleteOutlined />} danger></Button>
+            </Tooltip>
+          </Space>
+        );
+      },
+    },
   ];
 
   return (
@@ -57,6 +82,21 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
       </div>
 
       <div>
+        <Space wrap size="large">
+          <Button
+            icon={<PlusCircleOutlined />}
+            className="mb-3"
+            onClick={() => setIsModalOpen(true)}
+            type="primary"
+          >
+            Create
+          </Button>
+        </Space>
+        <HistoryCreateModal
+          isOpen={isModalOpen}
+          onOk={() => setIsModalOpen(false)}
+          onCancel={() => setIsModalOpen(false)}
+        />
         <Table
           columns={columns}
           dataSource={histories ?? []}
