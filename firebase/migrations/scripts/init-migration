@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eu
+
+THIS_SCRIPT=$(realpath "$0")
+BASE_DIR=$(realpath "$(dirname "$THIS_SCRIPT")/..")
+MIGRATION_DIR=${BASE_DIR}/migrations
+
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+FILENAME="${TIMESTAMP}".migration.ts
+touch "${MIGRATION_DIR}"/"${FILENAME}"
+echo "Created ${FILENAME} in ${MIGRATION_DIR}"

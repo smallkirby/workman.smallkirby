@@ -6,6 +6,7 @@ export type TypingTheme = {
 };
 
 export type TypingData = {
+  id?: string;
   wpm: number;
   accuracy: number;
   badKeys: string;

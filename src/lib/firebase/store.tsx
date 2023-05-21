@@ -1,9 +1,10 @@
 import {
   Timestamp,
-  addDoc,
   collection,
+  doc,
   getDocs,
   getFirestore as getFirestoreNative,
+  setDoc,
 } from 'firebase/firestore';
 import { getFirebaseApp } from './app';
 import { TypingData, TypingTheme } from '@/types/TypingData';
@@ -95,10 +96,11 @@ export const createHistory = async (
 ): Promise<void | PrettyFirebaseError> => {
   const db = getFirestore();
   const historiesCollection = collection(db, 'histories');
-  const docRef = await addDoc(
-    historiesCollection,
-    convertTypingData2Firebase(history)
-  )
+  const docRef = doc(historiesCollection);
+  await setDoc(docRef, {
+    ...convertTypingData2Firebase(history),
+    id: docRef.id,
+  })
     .then((doc) => doc)
     .catch((e) => {
       if (e instanceof FirebaseError) {

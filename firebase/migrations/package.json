@@ -1,0 +1,13 @@
+{
+  "name": "workman.migrations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "firebase": "^9.22.0",
+    "firebase-admin": "^11.8.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
