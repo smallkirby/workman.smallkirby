@@ -48,7 +48,6 @@ export default function WPMHistoryChart({ histories }: Props) {
     <>
       {dataHistories === null ? (
         <Spin
-          tip="Loading..."
           size="large"
           className="text-center mx-auto mt-16 w-full h-full"
         />

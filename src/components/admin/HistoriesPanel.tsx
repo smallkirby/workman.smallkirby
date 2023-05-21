@@ -179,6 +179,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
           scroll={{
             x: '100%',
           }}
+          rowKey={(record) => record.id ?? ''}
         />
       </div>
     </>
