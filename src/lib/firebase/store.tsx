@@ -97,7 +97,7 @@ export const createHistory = async (
   const db = getFirestore();
   const historiesCollection = collection(db, 'histories');
   const docRef = doc(historiesCollection);
-  await setDoc(docRef, {
+  const result = await setDoc(docRef, {
     ...convertTypingData2Firebase(history),
     id: docRef.id,
   })
@@ -110,9 +110,7 @@ export const createHistory = async (
         throw e;
       }
     });
-  if (docRef instanceof PrettyFirebaseError) {
-    return docRef;
+  if (result instanceof PrettyFirebaseError) {
+    return result;
   }
-
-  return;
 };
