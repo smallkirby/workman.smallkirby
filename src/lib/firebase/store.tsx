@@ -1,4 +1,6 @@
 import {
+  Timestamp,
+  addDoc,
   collection,
   getDocs,
   getFirestore as getFirestoreNative,
@@ -9,6 +11,13 @@ import { FirebaseError } from 'firebase/app';
 import { stripIndent } from 'common-tags';
 
 const getFirestore = () => getFirestoreNative(getFirebaseApp());
+
+const convertTypingData2Firebase = (data: TypingData) => {
+  return {
+    ...data,
+    date: Timestamp.fromDate(data.date),
+  };
+};
 
 export class PrettyFirebaseError extends Error {
   readonly code: string;
@@ -24,6 +33,7 @@ export class PrettyFirebaseError extends Error {
             Permission denied.
             You have to be logged in as smallkirby.
             Are you cheating...!?!?`;
+        break;
       default:
         this.code = 'unknown';
         this.message = error.message;
@@ -78,4 +88,29 @@ export const getHistories = async (): Promise<
     ...doc.data(),
     date: doc.data().date.toDate(),
   })) as TypingData[];
+};
+
+export const createHistory = async (
+  history: TypingData
+): Promise<void | PrettyFirebaseError> => {
+  const db = getFirestore();
+  const historiesCollection = collection(db, 'histories');
+  const docRef = await addDoc(
+    historiesCollection,
+    convertTypingData2Firebase(history)
+  )
+    .then((doc) => doc)
+    .catch((e) => {
+      if (e instanceof FirebaseError) {
+        return new PrettyFirebaseError(e);
+      } else {
+        console.error(e);
+        throw e;
+      }
+    });
+  if (docRef instanceof PrettyFirebaseError) {
+    return docRef;
+  }
+
+  return;
 };

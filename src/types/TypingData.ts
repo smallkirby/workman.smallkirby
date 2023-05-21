@@ -9,6 +9,6 @@ export type TypingData = {
   wpm: number;
   accuracy: number;
   badKeys: string;
-  date: string;
+  date: Date;
   themeId: string;
 };

@@ -4,11 +4,13 @@ import {
   EditOutlined,
   PlusCircleOutlined,
 } from '@ant-design/icons';
-import { Button, Space, Table, Tooltip } from 'antd';
+import { Button, Space, Table, Tooltip, notification } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import HistoryCreateModal from './HistoryCreateModal';
-import { useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
+import { createHistory } from '@/lib/firebase/store';
+import { AlertContext } from './AlertProvider';
 
 type Props = {
   histories: TypingData[] | null;
@@ -17,6 +19,24 @@ type Props = {
 
 export default function HistoriesPanel({ histories, platforms }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { setAlert } = useContext(AlertContext);
+  const [api, contextHolder] = notification.useNotification();
+
+  const onCreateSubmit = useCallback(
+    async (values: TypingData): Promise<void> => {
+      const result = await createHistory(values);
+      if (result) {
+        setAlert('Error while creating history', result.message, 'error');
+      } else {
+        api.success({
+          message: 'History created.',
+          duration: 3,
+        });
+      }
+      return Promise.resolve();
+    },
+    [api, setAlert]
+  );
 
   const columns: ColumnsType<TypingData> = [
     {
@@ -74,6 +94,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
 
   return (
     <>
+      {contextHolder}
       <div className="mx-2 text-center">
         <h2 className="text-3xl mb-4">Histories</h2>
         <div className="mb-4">
@@ -94,7 +115,8 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
         </Space>
         <HistoryCreateModal
           isOpen={isModalOpen}
-          onOk={() => setIsModalOpen(false)}
+          platforms={platforms ?? []}
+          onOk={(value) => onCreateSubmit(value)}
           onCancel={() => setIsModalOpen(false)}
         />
         <Table

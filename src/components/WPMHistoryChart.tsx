@@ -11,7 +11,7 @@ const baseline = typingBaselines.sort(
 type WPMData = {
   id: 'wpm';
   data: {
-    x: string;
+    x: Date;
     y: number;
   }[];
 };

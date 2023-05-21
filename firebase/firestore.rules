@@ -4,17 +4,21 @@ service cloud.firestore {
 
     match /platforms/{pid} {
       allow read: if true;
-      allow write: if false;
+      allow write: if isSmallkirby(request.auth.uid);
     }
 
     match /histories/{pid} {
       allow read: if true;
-      allow write: if false;
+      allow write: if isSmallkirby(request.auth.uid);
     }
 
     // Default
     match /{document=**} {
       allow read, write: if false;
+    }
+
+    function isSmallkirby(uid) {
+      return uid == 'YDEF6DtiuMQbjEMxFxAOgCRwuq12';
     }
   }
 }

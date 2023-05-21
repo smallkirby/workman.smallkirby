@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 type AccuracyData = {
   id: 'accuracy';
   data: {
-    x: string;
+    x: Date;
     y: number;
   }[];
 };
