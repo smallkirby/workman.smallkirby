@@ -83,7 +83,6 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
       render: (wpm: number) => {
         return <div>{wpm.toFixed(2)}</div>;
       },
-      align: 'right',
     },
     {
       title: 'Accuracy',
@@ -92,7 +91,6 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
       render: (accuracy: number) => {
         return <div>{accuracy.toFixed(2)}</div>;
       },
-      align: 'right',
     },
     {
       title: '',
