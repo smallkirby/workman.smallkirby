@@ -1,6 +1,6 @@
 import { Card } from 'antd';
 import { BugOutlined } from '@ant-design/icons';
-import AccuracyHistoryChart from './AccuracyHistoryChart';
+import AccuracyHistoryChart from '@/components/charts/AccuracyHistoryChart';
 import { TypingData } from '@/types/TypingData';
 
 type Props = {

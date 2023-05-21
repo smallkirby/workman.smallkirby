@@ -1,5 +1,5 @@
 import AccuracyHistory from '@/components/AccuracyHistory';
-import { HistoryContext } from '@/components/HistoryProvider';
+import { HistoryContext } from '@/components/providers/HistoryProvider';
 import LayoutDescription from '@/components/LayoutDescription';
 import WPMHistory from '@/components/WPMHistory';
 import MainLayout from '@/layouts/MainLayout';

@@ -1,6 +1,6 @@
 import { Card } from 'antd';
 import { FastForwardOutlined } from '@ant-design/icons';
-import WPMHistoryChart from './WPMHistoryChart';
+import WPMHistoryChart from '@/components/charts/WPMHistoryChart';
 import { TypingData } from '@/types/TypingData';
 
 type Props = {

@@ -11,8 +11,8 @@ import dayjs from 'dayjs';
 import HistoryCreateModal from './HistoryCreateModal';
 import { useCallback, useContext, useState } from 'react';
 import { createHistory, deleteHistory } from '@/lib/firebase/store';
-import { AlertContext } from './AlertProvider';
-import { HistoryContext } from './HistoryProvider';
+import { AlertContext } from '../providers/AlertProvider';
+import { HistoryContext } from '../providers/HistoryProvider';
 
 type Props = {
   histories: TypingData[] | null;

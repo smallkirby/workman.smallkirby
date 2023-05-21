@@ -1,5 +1,5 @@
-import Title from '@/components/Title';
-import UserBadge from '@/components/UserBadge';
+import Title from '@/components/header/Title';
+import UserBadge from '@/components/header/UserBadge';
 
 type Props = { children: React.ReactNode };
 

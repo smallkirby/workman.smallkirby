@@ -2,9 +2,9 @@ import { AppProps } from 'next/app';
 import '@/styles/global.css';
 import Head from 'next/head';
 import { FirebaseAuthProvider } from '@/lib/firebase/auth';
-import AlertProvider from '@/components/AlertProvider';
+import AlertProvider from '@/components/providers/AlertProvider';
 import { ConfigProvider, theme } from 'antd';
-import HistoryProvider from '@/components/HistoryProvider';
+import HistoryProvider from '@/components/providers/HistoryProvider';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

@@ -1,4 +1,4 @@
-import LoginBox from '@/components/LoginBox';
+import LoginBox from '@/components/login/LoginBox';
 import MainLayout from '@/layouts/MainLayout';
 import { FirebaseAuthContext } from '@/lib/firebase/auth';
 import { useRouter } from 'next/router';

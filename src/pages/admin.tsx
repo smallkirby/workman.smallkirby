@@ -1,6 +1,6 @@
-import HistoriesPanel from '@/components/HistoriesPanel';
-import { HistoryContext } from '@/components/HistoryProvider';
-import PlatformsPanel from '@/components/PlatformsPanel';
+import HistoriesPanel from '@/components/admin/HistoriesPanel';
+import { HistoryContext } from '@/components/providers/HistoryProvider';
+import PlatformsPanel from '@/components/admin/PlatformsPanel';
 import MainLayout from '@/layouts/MainLayout';
 import { Tabs } from 'antd';
 
