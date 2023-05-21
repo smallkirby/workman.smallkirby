@@ -3,6 +3,7 @@
   "rules": {
     "require-jsdoc": "off",
     "object-curly-spacing": ["error", "always"],
+    "operator-linebreak": "off",
     "indent": [
       "error",
       2,

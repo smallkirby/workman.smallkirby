@@ -8,11 +8,15 @@ import {
 import { Button, Popconfirm, Space, Table, Tooltip, notification } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
-import HistoryCreateModal from './HistoryCreateModal';
+import HistoryModal from './HistoryModal';
 import { useCallback, useContext, useState } from 'react';
-import { createHistory, deleteHistory } from '@/lib/firebase/store';
-import { AlertContext } from '../providers/AlertProvider';
-import { HistoryContext } from '../providers/HistoryProvider';
+import {
+  createHistory,
+  deleteHistory,
+  updateHistory,
+} from '@/lib/firebase/store';
+import { AlertContext } from '@/components/providers/AlertProvider';
+import { HistoryContext } from '@/components/providers/HistoryProvider';
 
 type Props = {
   histories: TypingData[] | null;
@@ -24,22 +28,33 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
   const { setAlert } = useContext(AlertContext);
   const [api, contextHolder] = notification.useNotification();
   const { sync } = useContext(HistoryContext);
+  const [editingForm, setEditingForm] = useState<TypingData | null>(null);
 
-  const onCreateSubmit = useCallback(
-    async (values: TypingData): Promise<void> => {
-      const result = await createHistory(values);
+  const onCancel = useCallback(() => {
+    setEditingForm(null);
+    setIsModalOpen(false);
+  }, []);
+
+  const onSubmit = useCallback(
+    async (type: 'create' | 'edit', values: TypingData): Promise<void> => {
+      const result =
+        type === 'create'
+          ? await createHistory(values)
+          : await updateHistory(values);
       if (result) {
         setAlert('Error while creating history', result.message, 'error');
       } else {
         api.success({
-          message: 'History created.',
+          message: type === 'create' ? 'History created.' : 'History updated.',
           duration: 3,
         });
+
+        onCancel();
         sync();
       }
       return Promise.resolve();
     },
-    [api, setAlert, sync]
+    [api, setAlert, sync, onCancel]
   );
 
   const onRemove = useCallback(
@@ -99,7 +114,13 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
         return (
           <Space wrap>
             <Tooltip placement="top" title="Edit entry.">
-              <Button icon={<EditOutlined />} />
+              <Button
+                icon={<EditOutlined />}
+                onClick={() => {
+                  setEditingForm(record);
+                  setIsModalOpen(true);
+                }}
+              />
             </Tooltip>
             <Tooltip placement="top" title="Remove entry.">
               <Popconfirm
@@ -141,11 +162,13 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
             Create
           </Button>
         </Space>
-        <HistoryCreateModal
+        <HistoryModal
           isOpen={isModalOpen}
+          type={editingForm ? 'edit' : 'create'}
+          initialValues={editingForm}
           platforms={platforms ?? []}
-          onOk={(value) => onCreateSubmit(value)}
-          onCancel={() => setIsModalOpen(false)}
+          onOk={(type, value) => onSubmit(type, value)}
+          onCancel={onCancel}
         />
         <Table
           columns={columns}

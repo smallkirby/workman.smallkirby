@@ -138,3 +138,29 @@ export const deleteHistory = async (
     return result;
   }
 };
+
+export const updateHistory = async (
+  history: TypingData
+): Promise<void | PrettyFirebaseError> => {
+  if (!history.id) {
+    return;
+  }
+  const db = getFirestore();
+  const result = setDoc(
+    doc(db, 'histories', history.id),
+    convertTypingData2Firebase(history)
+  )
+    .then((doc) => doc)
+    .catch((e) => {
+      if (e instanceof FirebaseError) {
+        return new PrettyFirebaseError(e);
+      } else {
+        console.error(e);
+        throw e;
+      }
+    });
+
+  if (result instanceof PrettyFirebaseError) {
+    return result;
+  }
+};

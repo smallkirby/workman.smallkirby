@@ -13,8 +13,10 @@ import dayjs from 'dayjs';
 
 type Props = {
   isOpen: boolean;
+  type: 'create' | 'edit';
+  initialValues: TypingData | null;
   platforms: TypingTheme[];
-  onOk: (values: TypingData) => Promise<void>;
+  onOk: (type: 'create' | 'edit', values: TypingData) => Promise<void>;
   onCancel: () => void;
 };
 
@@ -23,15 +25,21 @@ type TypingDataForm = Omit<TypingData, 'date' | 'badKeys'> & {
   badKeys: string | undefined;
 };
 
-export default function HistoryCreateModal({
+export default function HistoryModal({
   isOpen,
+  type,
+  initialValues,
   platforms,
   onCancel,
   onOk,
 }: Props) {
-  const onCreate = (values: TypingDataForm) => {
-    onOk({
+  const onSubmit = (values: TypingDataForm) => {
+    const valuesToSubmit = {
       ...values,
+      id: type === 'create' ? undefined : initialValues?.id,
+    };
+    onOk(type, {
+      ...valuesToSubmit,
       date: values.date.toDate(),
       badKeys: values.badKeys ?? '',
     })
@@ -65,7 +73,7 @@ export default function HistoryCreateModal({
     <Modal
       open={isOpen}
       onCancel={onCancel}
-      title="Create History"
+      title={type === 'create' ? 'Create History' : 'Edit History'}
       okText="Create"
       confirmLoading={false}
       keyboard={true}
@@ -77,9 +85,14 @@ export default function HistoryCreateModal({
         labelCol={{ span: 6 }}
         labelAlign="left"
         preserve={false}
-        onFinish={onCreate}
+        onFinish={onSubmit}
       >
-        <Form.Item name="themeId" label="Platform" rules={[{ required: true }]}>
+        <Form.Item
+          name="themeId"
+          label="Platform"
+          rules={[{ required: true }]}
+          initialValue={initialValues?.themeId}
+        >
           <Select placeholder="Platform" allowClear>
             {platforms.map((platform) => {
               return (
@@ -91,13 +104,19 @@ export default function HistoryCreateModal({
           </Select>
         </Form.Item>
 
-        <Form.Item name="wpm" label="WPM/KPM" rules={[{ required: true }]}>
+        <Form.Item
+          name="wpm"
+          label="WPM/KPM"
+          rules={[{ required: true }]}
+          initialValue={initialValues?.wpm}
+        >
           <InputNumber type="number" />
         </Form.Item>
 
         <Form.Item
           name="accuracy"
           label="Accuracy (%)"
+          initialValue={initialValues?.accuracy}
           rules={[
             { required: true },
             () => ({
@@ -119,6 +138,7 @@ export default function HistoryCreateModal({
         </Form.Item>
 
         <Form.Item
+          initialValue={initialValues?.badKeys}
           name="badKeys"
           label="Bad Keys"
           rules={[
@@ -138,7 +158,7 @@ export default function HistoryCreateModal({
         <Form.Item
           name="date"
           label="Date"
-          initialValue={dayjs()}
+          initialValue={initialValues ? dayjs(initialValues.date) : dayjs()}
           rules={[{ required: true }]}
         >
           <DatePicker showTime />
@@ -150,7 +170,7 @@ export default function HistoryCreateModal({
               Cancel
             </Button>
             <Button type="primary" htmlType="submit">
-              Create
+              {type === 'create' ? 'Create' : 'Update'}
             </Button>
           </Space>
         </Form.Item>
