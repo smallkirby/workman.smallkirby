@@ -1,6 +1,7 @@
 import {
   Timestamp,
   collection,
+  deleteDoc,
   doc,
   getDocs,
   getFirestore as getFirestoreNative,
@@ -110,6 +111,29 @@ export const createHistory = async (
         throw e;
       }
     });
+  if (result instanceof PrettyFirebaseError) {
+    return result;
+  }
+};
+
+export const deleteHistory = async (
+  history: TypingData
+): Promise<void | PrettyFirebaseError> => {
+  if (!history.id) {
+    return;
+  }
+  const db = getFirestore();
+  const result = deleteDoc(doc(db, 'histories', history.id))
+    .then((doc) => doc)
+    .catch((e) => {
+      if (e instanceof FirebaseError) {
+        return new PrettyFirebaseError(e);
+      } else {
+        console.error(e);
+        throw e;
+      }
+    });
+
   if (result instanceof PrettyFirebaseError) {
     return result;
   }

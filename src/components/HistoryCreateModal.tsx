@@ -92,7 +92,7 @@ export default function HistoryCreateModal({
         </Form.Item>
 
         <Form.Item name="wpm" label="WPM/KPM" rules={[{ required: true }]}>
-          <InputNumber />
+          <InputNumber type="number" />
         </Form.Item>
 
         <Form.Item

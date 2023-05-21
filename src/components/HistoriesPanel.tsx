@@ -3,13 +3,14 @@ import {
   DeleteOutlined,
   EditOutlined,
   PlusCircleOutlined,
+  WarningFilled,
 } from '@ant-design/icons';
-import { Button, Space, Table, Tooltip, notification } from 'antd';
+import { Button, Popconfirm, Space, Table, Tooltip, notification } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import HistoryCreateModal from './HistoryCreateModal';
 import { useCallback, useContext, useState } from 'react';
-import { createHistory } from '@/lib/firebase/store';
+import { createHistory, deleteHistory } from '@/lib/firebase/store';
 import { AlertContext } from './AlertProvider';
 
 type Props = {
@@ -34,6 +35,21 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
         });
       }
       return Promise.resolve();
+    },
+    [api, setAlert]
+  );
+
+  const onRemove = useCallback(
+    async (history: TypingData): Promise<void> => {
+      const result = await deleteHistory(history);
+      if (result) {
+        setAlert('Error while deleting history', result.message, 'error');
+      } else {
+        api.success({
+          message: 'History deleted.',
+          duration: 3,
+        });
+      }
     },
     [api, setAlert]
   );
@@ -77,14 +93,24 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
     {
       title: '',
       key: 'action',
-      render: () => {
+      render: (_, record: TypingData) => {
         return (
           <Space wrap>
             <Tooltip placement="top" title="Edit entry.">
-              <Button icon={<EditOutlined />}></Button>
+              <Button icon={<EditOutlined />} />
             </Tooltip>
             <Tooltip placement="top" title="Remove entry.">
-              <Button icon={<DeleteOutlined />} danger></Button>
+              <Popconfirm
+                title="Are you sure to delete this history?"
+                onConfirm={() => onRemove(record)}
+                okText="Delete"
+                okType="danger"
+                cancelText="Cancel"
+                placement="bottom"
+                icon={<WarningFilled style={{ color: 'red' }} />}
+              >
+                <Button icon={<DeleteOutlined />} danger />
+              </Popconfirm>
             </Tooltip>
           </Space>
         );
