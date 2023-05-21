@@ -3,9 +3,12 @@ import { HistoryContext } from '@/components/providers/HistoryProvider';
 import LayoutDescription from '@/components/LayoutDescription';
 import WPMHistory from '@/components/WPMHistory';
 import MainLayout from '@/layouts/MainLayout';
-import { Space } from 'antd';
+import { Button, Space } from 'antd';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <MainLayout>
       <HistoryContext.Consumer>
@@ -19,6 +22,18 @@ export default function Home() {
               <span className="ml-1">cuz they does not work</span>
             </div>
             <div className="mx-auto w-full">
+              <Space
+                direction="horizontal"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                }}
+                className="mb-8"
+              >
+                <Button onClick={() => router.push('/admin')}>
+                  Go to Admin Page
+                </Button>
+              </Space>
               <Space
                 direction="vertical"
                 size="large"
