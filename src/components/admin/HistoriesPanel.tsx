@@ -155,6 +155,9 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
           loading={histories == null}
           size="large"
           className="w-full"
+          scroll={{
+            x: '100%',
+          }}
         />
       </div>
     </>
