@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { FirebaseAuthProvider } from '@/lib/firebase/auth';
 import AlertProvider from '@/components/AlertProvider';
 import { ConfigProvider, theme } from 'antd';
+import HistoryProvider from '@/components/HistoryProvider';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,15 +16,17 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <AlertProvider>
           <FirebaseAuthProvider>
-            <Head>
-              <title>workman</title>
-              <link
-                rel="shortcut icon"
-                href="/favicon.ico?"
-                type="image/x-icon"
-              />
-            </Head>
-            <Component {...pageProps} />
+            <HistoryProvider>
+              <Head>
+                <title>workman</title>
+                <link
+                  rel="shortcut icon"
+                  href="/favicon.ico?"
+                  type="image/x-icon"
+                />
+              </Head>
+              <Component {...pageProps} />
+            </HistoryProvider>
           </FirebaseAuthProvider>
         </AlertProvider>
       </ConfigProvider>

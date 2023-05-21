@@ -12,6 +12,7 @@ import HistoryCreateModal from './HistoryCreateModal';
 import { useCallback, useContext, useState } from 'react';
 import { createHistory, deleteHistory } from '@/lib/firebase/store';
 import { AlertContext } from './AlertProvider';
+import { HistoryContext } from './HistoryProvider';
 
 type Props = {
   histories: TypingData[] | null;
@@ -22,6 +23,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const [api, contextHolder] = notification.useNotification();
+  const { sync } = useContext(HistoryContext);
 
   const onCreateSubmit = useCallback(
     async (values: TypingData): Promise<void> => {
@@ -33,10 +35,11 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
           message: 'History created.',
           duration: 3,
         });
+        sync();
       }
       return Promise.resolve();
     },
-    [api, setAlert]
+    [api, setAlert, sync]
   );
 
   const onRemove = useCallback(
@@ -49,9 +52,10 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
           message: 'History deleted.',
           duration: 3,
         });
+        sync();
       }
     },
-    [api, setAlert]
+    [api, setAlert, sync]
   );
 
   const columns: ColumnsType<TypingData> = [
