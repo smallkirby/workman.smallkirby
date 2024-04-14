@@ -25,10 +25,10 @@ export default function TypingEventListing() {
             .map((event, index) => {
               return (
                 <li key={index} className="mb-4">
-                  <div className="font-bold">
-                    {dayjs(event.date).format('YYYY.MM.DD')}
-                  </div>
-                  <div>{event.description}</div>
+                  <span className="font-bold mr-2">
+                    {dayjs(event.date).format('YYYY.MM.DD')}:
+                  </span>
+                  <span>{event.description}</span>
                 </li>
               );
             })}
