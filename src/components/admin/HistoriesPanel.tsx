@@ -92,7 +92,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
       },
     },
     {
-      title: 'WPM',
+      title: 'WPM or KPM',
       dataIndex: 'wpm',
       key: 'wpm',
       render: (wpm: number) => {

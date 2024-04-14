@@ -17,7 +17,7 @@ export default function WPMHistory({ histories }: Props) {
               style={{ fontSize: '150%', marginRight: '8px' }}
             />
           </div>
-          <div>WPM History</div>
+          <div>KPM (Keys Per Minute) History</div>
         </div>
       }
       bodyStyle={{ padding: '0px' }}
