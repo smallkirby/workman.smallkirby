@@ -19,7 +19,7 @@ export default function TypingEventListing() {
       <div className="md:my-8 md:mx-4">
         <ul className="list-disc">
           {typingEvents
-            .toSorted((a, b) => {
+            .sort((a, b) => {
               return a.date > b.date ? -1 : 1;
             })
             .map((event, index) => {
