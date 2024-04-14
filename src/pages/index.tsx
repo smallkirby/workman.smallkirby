@@ -5,6 +5,7 @@ import WPMHistory from '@/components/WPMHistory';
 import MainLayout from '@/layouts/MainLayout';
 import { Button, Space } from 'antd';
 import { useRouter } from 'next/router';
+import TypingEventListing from '@/components/TypingEventListing';
 
 export default function Home() {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function Home() {
                 <LayoutDescription />
                 <WPMHistory histories={histories} />
                 <AccuracyHistory histories={histories} />
+                <TypingEventListing />
               </Space>
             </div>
           </>
