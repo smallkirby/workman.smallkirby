@@ -1,8 +1,11 @@
 import { ResponsiveLine } from '@nivo/line';
+import { CartesianMarkerProps } from '@nivo/core';
 import typingBaselines from '@/data/baseline';
 import { TypingData } from '@/types/TypingData';
 import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
+import { typingEvents } from '@/data/event';
+import dayjs from 'dayjs';
 
 const baseline = typingBaselines.sort(
   (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
@@ -80,6 +83,17 @@ export default function WPMHistoryChart({ histories }: Props) {
                   new Date(a.date).getTime() - new Date(b.date).getTime()
               )[0].wpm,
             },
+            ...typingEvents.map((event) => {
+              return {
+                axis: 'x',
+                value: dayjs(event.date).toDate(),
+                lineStyle: {
+                  stroke: '#D3869B',
+                  strokeWidth: 1.5,
+                  opacity: 0.5,
+                },
+              } as CartesianMarkerProps;
+            }),
           ]}
           pointSize={10}
           enablePointLabel={false}
