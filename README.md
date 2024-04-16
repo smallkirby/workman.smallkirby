@@ -1,7 +1,7 @@
 # ⌨️ workman.smallkirby 👔
 
 ![Build & Test](https://github.com/smallkirby/workman.smallkirby.xyz/actions/workflows/build-test.yml/badge.svg)
-![Deploy](https://github.com/smallkirby/workman.smallkirby.xyz/actions/workflows/deploy.yml/badge.svg)
+![Deploy](https://shields.io/badge/Deployed_to-Cloudflare_Pages-blue?logo=cloudflarepages&color=F38020)
 
 History of the practice of workman keyboard layout.
 
