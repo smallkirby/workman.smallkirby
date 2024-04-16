@@ -57,13 +57,13 @@ export default function AccuracyHistoryChart({ histories }: Props) {
           data={[dataHistories]}
           xScale={{
             type: 'time',
-            format: '%Y-%m-%dT%H:%M:%S.%L%Z',
+            format: '%Y.%m.%dT%H:%M:%S.%L%Z',
             precision: 'minute',
             useUTC: false,
           }}
-          xFormat={'time:%Y-%m-%d %H:%M:%S'}
+          xFormat={'time:%Y.%m.%d %H:%M:%S'}
           axisBottom={{
-            format: '%m/%d %H:%M',
+            format: '%Y.%m.%d',
             tickRotation: -45,
           }}
           yScale={{ type: 'linear', min: 60, max: 100 }}
@@ -91,7 +91,7 @@ export default function AccuracyHistoryChart({ histories }: Props) {
               } as CartesianMarkerProps;
             }),
           ]}
-          pointSize={10}
+          pointSize={5}
           enablePointLabel={false}
           enableGridX={true}
           enableGridY={true}
