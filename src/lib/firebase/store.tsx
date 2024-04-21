@@ -123,7 +123,7 @@ export const deleteHistory = async (
     return;
   }
   const db = getFirestore();
-  const result = deleteDoc(doc(db, 'histories', history.id))
+  const result = await deleteDoc(doc(db, 'histories', history.id))
     .then((doc) => doc)
     .catch((e) => {
       if (e instanceof FirebaseError) {
@@ -146,7 +146,7 @@ export const updateHistory = async (
     return;
   }
   const db = getFirestore();
-  const result = setDoc(
+  const result = await setDoc(
     doc(db, 'histories', history.id),
     convertTypingData2Firebase(history)
   )

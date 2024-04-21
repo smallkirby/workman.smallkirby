@@ -42,7 +42,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
           ? await createHistory(values)
           : await updateHistory(values);
       if (result) {
-        setAlert('Error while creating history', result.message, 'error');
+        setAlert('Error while editing history', result.message, 'error');
       } else {
         api.success({
           message: type === 'create' ? 'History created.' : 'History updated.',
