@@ -8,7 +8,3 @@ updates:
       - 'smallkirby'
     labels:
       - 'dependencies'
-    groups:
-      src_all:
-        pattern:
-          - '*'
