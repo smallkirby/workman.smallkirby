@@ -37,6 +37,8 @@ jobs:
 
       - name: Run E2E tests 🧪
         run: npm run test:e2e
+        env:
+          NEXT_PUBLIC_FIREBASE_APIKEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_APIKEY }}
 
       - name: Upload test results 📦
         if: always()
