@@ -37,3 +37,11 @@ next-env.d.ts
 .env
 workman-*.json
 firebase.cert.json
+
+# tests
+/test-results
+
+# firebase
+firebase-debug.log
+firestore-debug.log
+ui-debug.log

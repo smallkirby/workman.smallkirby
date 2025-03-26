@@ -4,15 +4,14 @@ import {
   deleteDoc,
   doc,
   getDocs,
-  getFirestore as getFirestoreNative,
   setDoc,
 } from 'firebase/firestore';
-import { getFirebaseApp } from './app';
+import { store } from './app';
 import { TypingData, TypingTheme } from '@/types/TypingData';
 import { FirebaseError } from 'firebase/app';
 import { stripIndent } from 'common-tags';
 
-const getFirestore = () => getFirestoreNative(getFirebaseApp());
+const getFirestore = () => store;
 
 const convertTypingData2Firebase = (data: TypingData) => {
   return {

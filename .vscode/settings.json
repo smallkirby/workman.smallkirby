@@ -1,3 +1,4 @@
 {
+  "chat.tools.autoApprove": true,
   "editor.formatOnSave": true
 }

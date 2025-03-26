@@ -1,6 +1,5 @@
 import { AuthContextState, FirebaseUser } from '@/types/FirebaseUser';
-import { getFirebaseApp } from './app';
-import { getAuth } from 'firebase/auth';
+import { auth } from './app';
 import { createContext, useEffect, useState } from 'react';
 
 const FirebaseAuthContext = createContext<AuthContextState>({
@@ -13,9 +12,6 @@ type Props = {
 
 const FirebaseAuthProvider = ({ children }: Props) => {
   const [user, setUser] = useState<FirebaseUser | null | undefined>(undefined);
-
-  const app = getFirebaseApp();
-  const auth = getFirebaseAuth();
 
   useEffect(() => {
     setUser(undefined);
@@ -32,7 +28,7 @@ const FirebaseAuthProvider = ({ children }: Props) => {
       }
     });
     return () => unsubscribe();
-  }, [app, auth]);
+  }, []);
 
   return (
     <FirebaseAuthContext.Provider value={{ user }}>
@@ -42,10 +38,9 @@ const FirebaseAuthProvider = ({ children }: Props) => {
 };
 
 export const logout = async () => {
-  const auth = getFirebaseAuth();
   await auth.signOut();
 };
 
-export const getFirebaseAuth = () => getAuth(getFirebaseApp());
+export const getFirebaseAuth = () => auth;
 
 export { FirebaseAuthContext, FirebaseAuthProvider };

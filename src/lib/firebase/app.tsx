@@ -1,4 +1,6 @@
-import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
+import { FirebaseOptions, initializeApp } from 'firebase/app';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 if (process.env.NEXT_PUBLIC_FIREBASE_APIKEY === undefined) {
   throw new Error('NEXT_PUBLIC_FIREBASE_APIKEY is undefined');
@@ -12,7 +14,10 @@ export const firebaseConfig: FirebaseOptions = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const store = getFirestore(app);
 
-export const getFirebaseApp = () => {
-  return getApps().length ? getApps()[0] : app;
-};
+if (process.env.NODE_ENV === 'development') {
+  connectAuthEmulator(auth, 'http://localhost:9099');
+  connectFirestoreEmulator(store, 'localhost', 8080);
+}
