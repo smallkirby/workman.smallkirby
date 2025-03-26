@@ -32,6 +32,9 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
+      - name: Run E2E tests 🧪
+        run: npm run test:e2e
+
       - name: Run build 🏗️
         env:
           NEXT_PUBLIC_FIREBASE_APIKEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_APIKEY }}
