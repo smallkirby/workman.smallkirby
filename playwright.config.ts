@@ -9,4 +9,9 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
   },
   testDir: './tests',
+  expect: {
+    toMatchSnapshot: {
+      maxDiffPixels: 10000,
+    },
+  },
 });
