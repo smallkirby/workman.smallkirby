@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --no-audit
 
+      - name: Install Playwright browsers 🧑🏻‍💻
+        run: npx playwright install --with-deps
+
       - name: Run linter 👀
         run: npm run lint
 
