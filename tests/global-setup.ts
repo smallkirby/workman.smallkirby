@@ -7,7 +7,9 @@ async function globalSetup() {
 
   await new Promise((resolve) => setTimeout(resolve, 10000));
 
-  (globalThis as typeof globalThis & { __EMULATOR_PROCESS__?: any }).__EMULATOR_PROCESS__ = emulatorProcess;
+  (
+    globalThis as typeof globalThis & { __EMULATOR_PROCESS__?: any }
+  ).__EMULATOR_PROCESS__ = emulatorProcess;
 }
 
 export default globalSetup;
