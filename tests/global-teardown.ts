@@ -1,13 +1,5 @@
 import kill from 'tree-kill';
 
-declare global {
-  namespace NodeJS {
-    interface Global {
-      __EMULATOR_PROCESS__?: { pid: number };
-    }
-  }
-}
-
 async function globalTeardown() {
   try {
     const emulatorProcess = (
