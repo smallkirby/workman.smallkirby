@@ -38,6 +38,13 @@ jobs:
       - name: Run E2E tests 🧪
         run: npm run test:e2e
 
+      - name: Upload test results 📦
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results/
+
       - name: Run build 🏗️
         env:
           NEXT_PUBLIC_FIREBASE_APIKEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_APIKEY }}
