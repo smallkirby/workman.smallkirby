@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    reviewers:
+      - 'smallkirby'
+    labels:
+      - 'dependencies'
+    groups:
+      src_all:
+        pattern:
+          - '*'
