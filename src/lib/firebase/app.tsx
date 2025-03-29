@@ -13,7 +13,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const store = getFirestore(app);
 
-if (process.env.NODE_ENV === 'development') {
-  connectAuthEmulator(auth, 'http://localhost:9099');
-  connectFirestoreEmulator(store, 'localhost', 8080);
-}
+//if (process.env.NODE_ENV === 'development') {
+//  connectAuthEmulator(auth, 'http://localhost:9099');
+//  connectFirestoreEmulator(store, 'localhost', 8080);
+//}
