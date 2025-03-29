@@ -1,7 +1,7 @@
-import { getFirestore } from 'firebase-admin/firestore';
 import { applicationDefault, initializeApp } from 'firebase-admin/app';
-import { TypingData } from '../src/types/TypingData';
+import { getFirestore } from 'firebase-admin/firestore';
 import fitCurve from 'fit-curve';
+import { TypingData } from '../src/types/TypingData';
 
 if (process.env.GOOGLE_APPLICATION_CREDENTIALS === undefined) {
   throw new Error('GOOGLE_APPLICATION_CREDENTIALS is undefined');
@@ -22,7 +22,7 @@ const getHistories = async () => {
 
 const main = async () => {
   const histories = (await getHistories()).sort(
-    (a, b) => a.date.getTime() - b.date.getTime()
+    (a, b) => a.date.getTime() - b.date.getTime(),
   );
   const initialTime = histories[0].date.getTime();
   const points = histories.map((history) => [

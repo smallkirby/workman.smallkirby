@@ -5,6 +5,7 @@ export default function Title() {
 
   return (
     <button
+      type="button"
       className="mx-auto text-center font-cute
       border-none bg-inherit cursor-pointer py-0 text-black"
       onClick={() => router.push('/')}

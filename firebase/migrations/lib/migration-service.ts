@@ -10,8 +10,8 @@ export default class MigrationService {
     const cert = JSON.parse(
       fs.readFileSync(
         path.resolve(__dirname, '../../../firebase.cert.json'),
-        'utf-8'
-      )
+        'utf-8',
+      ),
     );
     this.app = admin.initializeApp({
       credential: admin.credential.cert(cert),

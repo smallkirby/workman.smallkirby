@@ -5,14 +5,14 @@ type Props = {
   children: React.ReactNode;
 };
 
-type Alert = {
+type AlertType = {
   title: string;
   message: string;
   type: 'error' | 'success';
 };
 
 export type AlertContext = {
-  alert: Alert | null;
+  alert: AlertType | null;
   setAlert: (title: string, message: string, type: 'error' | 'success') => void;
 };
 
@@ -22,7 +22,7 @@ export const AlertContext = createContext<AlertContext>({
 });
 
 const AlertProvider = ({ children }: Props) => {
-  const [alert, _setAlert] = useState<Alert | null>(null);
+  const [alert, _setAlert] = useState<AlertType | null>(null);
 
   return (
     <AlertContext.Provider

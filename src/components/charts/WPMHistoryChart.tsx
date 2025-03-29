@@ -1,14 +1,14 @@
-import { ResponsiveLine } from '@nivo/line';
 import { CartesianMarkerProps } from '@nivo/core';
-import typingBaselines from '@/data/baseline';
-import { TypingData } from '@/types/TypingData';
+import { ResponsiveLine } from '@nivo/line';
 import { Spin } from 'antd';
-import { useEffect, useState } from 'react';
-import { typingEvents } from '@/data/event';
 import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
+import typingBaselines from '@/data/baseline';
+import { typingEvents } from '@/data/event';
+import { TypingData } from '@/types/TypingData';
 
 const baseline = typingBaselines.sort(
-  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
 )[0];
 
 type WPMData = {
@@ -80,7 +80,7 @@ export default function WPMHistoryChart({ histories }: Props) {
               legendPosition: 'top-left',
               value: typingBaselines.sort(
                 (a, b) =>
-                  new Date(a.date).getTime() - new Date(b.date).getTime()
+                  new Date(a.date).getTime() - new Date(b.date).getTime(),
               )[0].wpm,
             },
             ...typingEvents.map((event) => {
@@ -111,9 +111,7 @@ export default function WPMHistoryChart({ histories }: Props) {
                 <div>{point.data.xFormatted}</div>
                 <div className="text-center">
                   {/** eslint-disable-next-line max-len **/}
-                  <span className="font-bold">
-                    {point.data.y.toString()}
-                  </span>{' '}
+                  <span className="font-bold">{point.data.y.toString()}</span>{' '}
                   WPM
                 </div>
               </div>

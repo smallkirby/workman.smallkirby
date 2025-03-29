@@ -1,5 +1,5 @@
-import { TypingData } from '@/types/TypingData';
 import dayjs from 'dayjs';
+import { TypingData } from '@/types/TypingData';
 
 const typingBaselines: TypingData[] = [
   {

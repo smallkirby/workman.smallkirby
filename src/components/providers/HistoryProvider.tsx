@@ -1,16 +1,16 @@
 import {
-  PrettyFirebaseError,
-  getHistories,
-  getPlatforms,
-} from '@/lib/firebase/store';
-import type { TypingData, TypingTheme } from '@/types/TypingData';
-import {
   createContext,
   useCallback,
   useContext,
   useEffect,
   useState,
 } from 'react';
+import {
+  getHistories,
+  getPlatforms,
+  PrettyFirebaseError,
+} from '@/lib/firebase/store';
+import type { TypingData, TypingTheme } from '@/types/TypingData';
 import { AlertContext } from './AlertProvider';
 
 type Props = {

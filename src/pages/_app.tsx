@@ -1,10 +1,10 @@
 import { AppProps } from 'next/app';
 import '@/styles/global.css';
-import Head from 'next/head';
-import { FirebaseAuthProvider } from '@/lib/firebase/auth';
-import AlertProvider from '@/components/providers/AlertProvider';
 import { ConfigProvider, theme } from 'antd';
+import Head from 'next/head';
+import AlertProvider from '@/components/providers/AlertProvider';
 import HistoryProvider from '@/components/providers/HistoryProvider';
+import { FirebaseAuthProvider } from '@/lib/firebase/auth';
 
 const DOMAIN = 'workman.smallkirby.xyz';
 

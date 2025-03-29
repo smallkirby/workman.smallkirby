@@ -1,7 +1,3 @@
 {
-  "recommendations": [
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "github.vscode-github-actions"
-  ]
+  "recommendations": ["github.vscode-github-actions", "biomejs.biome"]
 }

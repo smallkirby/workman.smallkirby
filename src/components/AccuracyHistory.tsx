@@ -1,5 +1,5 @@
-import { Card } from 'antd';
 import { BugOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
 import AccuracyHistoryChart from '@/components/charts/AccuracyHistoryChart';
 import { TypingData } from '@/types/TypingData';
 

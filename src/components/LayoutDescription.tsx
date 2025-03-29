@@ -38,7 +38,11 @@ export default function LayoutDescription() {
         <div className="mr-4 md:ml-10">
           <ul className="list-disc">
             <li>
-              <a href="https://workmanlayout.org/" target="_blank">
+              <a
+                href="https://workmanlayout.org/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 workman
               </a>{' '}
               is a relatevily modern keyboard layout.
@@ -48,6 +52,7 @@ export default function LayoutDescription() {
               <a
                 href="https://shop.yushakobo.jp/en/products/corne-cherry-v3"
                 target="_blank"
+                rel="noreferrer"
               >
                 Corne Cherry V3 split keyboard
               </a>
@@ -58,6 +63,7 @@ export default function LayoutDescription() {
               <a
                 href="https://github.com/smallkirby/dotfiles/blob/master/keyboard-layout/corne/workman"
                 target="_blank"
+                rel="noreferrer"
               >
                 smallkirby/dotfiles
               </a>

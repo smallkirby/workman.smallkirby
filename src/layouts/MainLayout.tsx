@@ -1,7 +1,7 @@
-import Title from '@/components/header/Title';
-import UserBadge from '@/components/header/UserBadge';
 import { GithubFilled } from '@ant-design/icons';
 import { Button, Space, Tooltip } from 'antd';
+import Title from '@/components/header/Title';
+import UserBadge from '@/components/header/UserBadge';
 
 type Props = { children: React.ReactNode };
 

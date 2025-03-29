@@ -16,12 +16,12 @@ export default function PlatformsPanel({ themes }: Props) {
       </div>
 
       {themes === null ? (
-        <div>hoge</div>
+        <div></div>
       ) : (
         <div className="flex flex-wrap justify-center">
-          {themes.map((elem, ix) => {
+          {themes.map((elem) => {
             return (
-              <div className="mx-4 my-2 md:my-4 w-full md:w-2/5" key={ix}>
+              <div className="mx-4 my-2 md:my-4 w-full md:w-2/5" key={elem.id}>
                 <PlatformCard theme={elem} />
               </div>
             );

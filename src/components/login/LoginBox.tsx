@@ -1,4 +1,3 @@
-import { getFirebaseAuth } from '@/lib/firebase/auth';
 import { Button, Card, Image } from 'antd';
 import {
   GithubAuthProvider,
@@ -7,6 +6,7 @@ import {
 } from 'firebase/auth';
 import { useCallback, useState } from 'react';
 import { isMobile } from 'react-device-detect';
+import { getFirebaseAuth } from '@/lib/firebase/auth';
 
 export default function LoginBox() {
   const [isLoading, setLoading] = useState(false);

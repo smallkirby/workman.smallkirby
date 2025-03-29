@@ -1,22 +1,22 @@
-import type { TypingData, TypingTheme } from '@/types/TypingData';
 import {
   DeleteOutlined,
   EditOutlined,
   PlusCircleOutlined,
   WarningFilled,
 } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table, Tooltip, notification } from 'antd';
+import { Button, notification, Popconfirm, Space, Table, Tooltip } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
-import HistoryModal from './HistoryModal';
 import { useCallback, useContext, useState } from 'react';
+import { AlertContext } from '@/components/providers/AlertProvider';
+import { HistoryContext } from '@/components/providers/HistoryProvider';
 import {
   createHistory,
   deleteHistory,
   updateHistory,
 } from '@/lib/firebase/store';
-import { AlertContext } from '@/components/providers/AlertProvider';
-import { HistoryContext } from '@/components/providers/HistoryProvider';
+import type { TypingData, TypingTheme } from '@/types/TypingData';
+import HistoryModal from './HistoryModal';
 
 type Props = {
   histories: TypingData[] | null;
@@ -54,7 +54,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
       }
       return Promise.resolve();
     },
-    [api, setAlert, sync, onCancel]
+    [api, setAlert, sync, onCancel],
   );
 
   const onRemove = useCallback(
@@ -70,7 +70,7 @@ export default function HistoriesPanel({ histories, platforms }: Props) {
         sync();
       }
     },
-    [api, setAlert, sync]
+    [api, setAlert, sync],
   );
 
   const columns: ColumnsType<TypingData> = [

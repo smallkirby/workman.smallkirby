@@ -16,7 +16,7 @@ const main = async () => {
         id: id,
       };
       await service.db.collection('histories').doc(doc.id).set(newHistory);
-    })
+    }),
   );
 };
 

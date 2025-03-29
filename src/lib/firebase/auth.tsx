@@ -1,6 +1,6 @@
+import { createContext, useEffect, useState } from 'react';
 import { AuthContextState, FirebaseUser } from '@/types/FirebaseUser';
 import { auth } from './app';
-import { createContext, useEffect, useState } from 'react';
 
 const FirebaseAuthContext = createContext<AuthContextState>({
   user: undefined,

@@ -1,4 +1,3 @@
-import { TypingData, TypingTheme } from '@/types/TypingData';
 import {
   Button,
   DatePicker,
@@ -10,6 +9,7 @@ import {
   Space,
 } from 'antd';
 import dayjs from 'dayjs';
+import { TypingData, TypingTheme } from '@/types/TypingData';
 
 type Props = {
   isOpen: boolean;
@@ -52,6 +52,7 @@ export default function HistoryModal({
   };
 
   const validateBadKeys = (value: string) => {
+    // biome-ignore lint/suspicious/noControlCharactersInRegex: expected
     if (!/^[\x00-\x7F]*$/.test(value)) {
       return Promise.reject(new Error('Bad keys must be ASCII.'));
     }
@@ -126,7 +127,7 @@ export default function HistoryModal({
                 }
                 if (!validateAccuracy(value)) {
                   return Promise.reject(
-                    new Error('Accuracy must be between 0 and 100.')
+                    new Error('Accuracy must be between 0 and 100.'),
                   );
                 }
                 return Promise.resolve();

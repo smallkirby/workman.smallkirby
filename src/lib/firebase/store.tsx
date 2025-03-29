@@ -1,15 +1,15 @@
+import { stripIndent } from 'common-tags';
+import { FirebaseError } from 'firebase/app';
 import {
-  Timestamp,
   collection,
   deleteDoc,
   doc,
   getDocs,
   setDoc,
+  Timestamp,
 } from 'firebase/firestore';
-import { store } from './app';
 import { TypingData, TypingTheme } from '@/types/TypingData';
-import { FirebaseError } from 'firebase/app';
-import { stripIndent } from 'common-tags';
+import { store } from './app';
 
 const getFirestore = () => store;
 
@@ -92,8 +92,8 @@ export const getHistories = async (): Promise<
 };
 
 export const createHistory = async (
-  history: TypingData
-): Promise<void | PrettyFirebaseError> => {
+  history: TypingData,
+): Promise<undefined | PrettyFirebaseError> => {
   const db = getFirestore();
   const historiesCollection = collection(db, 'histories');
   const docRef = doc(historiesCollection);
@@ -116,8 +116,8 @@ export const createHistory = async (
 };
 
 export const deleteHistory = async (
-  history: TypingData
-): Promise<void | PrettyFirebaseError> => {
+  history: TypingData,
+): Promise<undefined | PrettyFirebaseError> => {
   if (!history.id) {
     return;
   }
@@ -139,15 +139,15 @@ export const deleteHistory = async (
 };
 
 export const updateHistory = async (
-  history: TypingData
-): Promise<void | PrettyFirebaseError> => {
+  history: TypingData,
+): Promise<undefined | PrettyFirebaseError> => {
   if (!history.id) {
     return;
   }
   const db = getFirestore();
   const result = await setDoc(
     doc(db, 'histories', history.id),
-    convertTypingData2Firebase(history)
+    convertTypingData2Firebase(history),
   )
     .then((doc) => doc)
     .catch((e) => {

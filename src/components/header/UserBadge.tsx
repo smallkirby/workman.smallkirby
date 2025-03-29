@@ -1,4 +1,3 @@
-import { FirebaseAuthContext, logout } from '@/lib/firebase/auth';
 import {
   KeyOutlined,
   LoginOutlined,
@@ -7,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Avatar, Dropdown, Image, MenuProps, Space, Spin } from 'antd';
 import { useRouter } from 'next/router';
+import { FirebaseAuthContext, logout } from '@/lib/firebase/auth';
 
 export default function UserBadge() {
   const router = useRouter();
@@ -49,7 +49,7 @@ export default function UserBadge() {
               <Avatar
                 size={40}
                 icon={
-                  user && user.photoUrl ? (
+                  user?.photoUrl ? (
                     <Image
                       src={user.photoUrl}
                       alt={user.displayName || ''}

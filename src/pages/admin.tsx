@@ -1,8 +1,8 @@
-import HistoriesPanel from '@/components/admin/HistoriesPanel';
-import { HistoryContext } from '@/components/providers/HistoryProvider';
-import PlatformsPanel from '@/components/admin/PlatformsPanel';
-import MainLayout from '@/layouts/MainLayout';
 import { Tabs } from 'antd';
+import HistoriesPanel from '@/components/admin/HistoriesPanel';
+import PlatformsPanel from '@/components/admin/PlatformsPanel';
+import { HistoryContext } from '@/components/providers/HistoryProvider';
+import MainLayout from '@/layouts/MainLayout';
 
 export default function Admin() {
   return (

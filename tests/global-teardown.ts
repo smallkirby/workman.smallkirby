@@ -18,7 +18,7 @@ async function globalTeardown() {
             console.log('Emulator process tree terminated successfully.');
             resolve();
           }
-        })
+        }),
       );
     } else {
       console.warn('No emulator process found to terminate.');
@@ -26,7 +26,7 @@ async function globalTeardown() {
   } catch (error) {
     console.error(
       'An error occurred while terminating the emulator process:',
-      error
+      error,
     );
   }
 }

@@ -1,5 +1,5 @@
-import { TypingEvent } from '@/types/TypingEvent';
 import dayjs from 'dayjs';
+import { TypingEvent } from '@/types/TypingEvent';
 
 export const typingEvents: TypingEvent[] = [
   {

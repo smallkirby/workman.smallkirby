@@ -1,7 +1,7 @@
-import { typingEvents } from '@/data/event';
-import { Card } from 'antd';
 import { MessageOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
 import dayjs from 'dayjs';
+import { typingEvents } from '@/data/event';
 
 export default function TypingEventListing() {
   return (
@@ -24,7 +24,7 @@ export default function TypingEventListing() {
             })
             .map((event, index) => {
               return (
-                <li key={index} className="mb-4">
+                <li key={event.date.getMilliseconds()} className="mb-4">
                   <span className="font-bold mr-2">
                     {dayjs(event.date).format('YYYY.MM.DD')}:
                   </span>
