@@ -86,7 +86,7 @@ export default function AccuracyHistoryChart({ histories }: Props) {
             <YAxis dataKey="y" type="number" unit="%" domain={[75.0, 100.0]} />
             <Tooltip
               formatter={(value: number) => {
-                return [value, 'Accuracy', 's'];
+                return [`${value}%`, 'Accuracy'];
               }}
               labelFormatter={(value: number) => {
                 return dayjs(new Date(value)).format('YYYY.MM.DD HH:mm:ss');
