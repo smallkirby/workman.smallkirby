@@ -4,8 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers:
-      - "smallkirby"
     labels:
       - "dependencies"
     groups:
@@ -14,6 +12,16 @@ updates:
         patterns:
           - "react"
           - "next"
+      nivo:
+        dependency-type: production
+        patterns:
+          - "*nivo*"
+      antd:
+        dependency-type: production
+        patterns:
+          - "antd"
+          - "@antd*"
+
       dev-dependencies:
         dependency-type: production
         patterns:
