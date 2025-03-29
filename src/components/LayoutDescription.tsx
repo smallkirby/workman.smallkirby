@@ -27,15 +27,14 @@ export default function LayoutDescription() {
     >
       <div
         className="flex md:flex-row flex-col
-        justify-center items-center mt-6 md:m-4"
+        justify-center items-center mt-6 md:m-4 px-2"
       >
         <Image
           src="/images/workman-layout.png"
           alt="workman layout"
           className="rounded-lg shadow-lg mb-4 w-full"
-          width={imageSize}
         />
-        <div className="mr-4 md:ml-10">
+        <div className="ml-8 md:ml-10">
           <ul className="list-disc">
             <li>
               <a

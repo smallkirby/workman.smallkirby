@@ -16,13 +16,13 @@ export default function TypingEventListing() {
       }
       bodyStyle={{ padding: '0px' }}
     >
-      <div className="md:my-8 md:mx-4">
+      <div className="my-8 mx-10 md:mx-14">
         <ul className="list-disc">
           {typingEvents
             .sort((a, b) => {
               return a.date > b.date ? -1 : 1;
             })
-            .map((event, index) => {
+            .map((event) => {
               return (
                 <li key={event.date.getMilliseconds()} className="mb-4">
                   <span className="font-bold mr-2">
