@@ -6,8 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "npm run prettier && npm run eslint",
-    "lint:fix": "npm run prettier:fix && npm run eslint:fix",
     "test:e2e": "playwright test",
     "test:e2e:update-data": "playwright test --update-snapshots",
     "emulate": "firebase emulators:start --only firestore,auth",
