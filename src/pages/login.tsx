@@ -16,7 +16,7 @@ export default function Login() {
 
   return (
     <MainLayout>
-      <div className="mx-auto w-full text-center pt-8">
+      <div className="mx-auto w-full text-center pt-8 flex flex-col justify-center items-center">
         <div className="mb-8">
           You need to login as{' '}
           <a

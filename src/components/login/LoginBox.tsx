@@ -1,3 +1,4 @@
+import { GithubFilled } from '@ant-design/icons';
 import { Button, Card, Image } from 'antd';
 import {
   GithubAuthProvider,
@@ -25,17 +26,11 @@ export default function LoginBox() {
 
   return (
     <Card
-      style={{
-        margin: '10',
-      }}
-      className="mx-4 md:mx-auto md:w-96"
+      className="mx-20 md:mx-auto w-full md:w-96"
+      style={{ marginLeft: '30px', marginRight: '30px' }}
     >
       <div className="my-2">
-        <Image
-          src="https://github.githubassets.com/images/modules/logos_page/Octocat.png"
-          alt="GitHub Logo"
-          width={50}
-        />
+        <GithubFilled style={{ fontSize: '2.0rem' }} />
         <div className="mt-2">
           <h1 className="text-lg mb-4">Sign in with GitHub</h1>
           <Button className="w-48" loading={isLoading} onClick={onClickLogin}>

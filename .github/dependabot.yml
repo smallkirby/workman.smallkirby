@@ -12,10 +12,10 @@ updates:
         patterns:
           - "*react*"
           - "*next*"
-      nivo:
+      recharts:
         dependency-type: production
         patterns:
-          - "*nivo*"
+          - "*recharts*"
       antd:
         dependency-type: production
         patterns:
