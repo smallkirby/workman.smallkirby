@@ -34,7 +34,7 @@
     "@playwright/test": "^1.51.1",
     "autoprefixer": "^10.4.21",
     "firebase-admin": "^12.0.0",
-    "firebase-tools": "^13.35.1",
+    "firebase-tools": "^14.0.1",
     "fit-curve": "^0.2.0",
     "playwright": "^1.51.1",
     "postcss": "^8.4.23",
