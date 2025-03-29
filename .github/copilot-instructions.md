@@ -17,7 +17,7 @@ This is a tiny Web site. It uses Next.js and Ant Design.
 - Apply the formatter and linter to all edited code. Use the command:
 
 ```sh
-npm run lint:fix
+npm run fmt:fix
 ```
 
 - Verify the validity of the generated code by running the following command:

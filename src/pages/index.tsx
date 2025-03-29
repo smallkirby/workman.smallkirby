@@ -38,7 +38,8 @@ export default function Home() {
               <Space
                 direction="vertical"
                 size="large"
-                className="mx-auto md:w-4/5 flex"
+                className="md:w-4/5 mx-auto px-auto"
+                style={{ display: 'flex' }}
               >
                 <LayoutDescription />
                 <WPMHistory histories={histories} />
