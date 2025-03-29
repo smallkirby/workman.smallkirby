@@ -40,7 +40,7 @@ export default function MainLayout({ children }: Props) {
                     }}
                   />
                 }
-                type="ghost"
+                type="text"
                 style={{
                   padding: '0px',
                   margin: '0px',

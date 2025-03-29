@@ -20,7 +20,7 @@ export default function WPMHistory({ histories }: Props) {
           <div>KPM (Keys Per Minute) History</div>
         </div>
       }
-      bodyStyle={{ padding: '0px' }}
+      styles={{ body: { padding: '0px' } }}
     >
       <div className="h-96 md:my-8 md:mx-4">
         <WPMHistoryChart histories={histories} />
