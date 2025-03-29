@@ -10,8 +10,8 @@ updates:
       react-next:
         dependency-type: production
         patterns:
-          - "react"
-          - "next"
+          - "*react*"
+          - "*next*"
       nivo:
         dependency-type: production
         patterns:
