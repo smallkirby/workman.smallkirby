@@ -14,7 +14,7 @@ export default function TypingEventListing() {
           <div>Events</div>
         </div>
       }
-      bodyStyle={{ padding: '0px' }}
+      styles={{ body: { padding: '0px' } }}
     >
       <div className="my-8 mx-10 md:mx-14">
         <ul className="list-disc">

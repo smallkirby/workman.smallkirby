@@ -23,7 +23,7 @@ export default function LayoutDescription() {
           <div>Workman Layout</div>
         </div>
       }
-      bodyStyle={{ padding: '0px' }}
+      styles={{ body: { padding: '0px' } }}
     >
       <div
         className="flex md:flex-row flex-col
