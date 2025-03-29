@@ -6,9 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'smallkirby/workman.smallkirby'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v2
@@ -17,8 +14,6 @@ jobs:
 
       - name: Enable auto-merge for Dependabot PRs
         run: |
-          git config --local user.name 'GitHub Action'
-          git config --local user.email 'workman+github-actions[bot]@users.noreply.github.com'
           gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
