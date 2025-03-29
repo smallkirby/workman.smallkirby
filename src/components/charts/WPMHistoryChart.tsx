@@ -86,7 +86,7 @@ export default function WPMHistoryChart({ histories }: Props) {
             <YAxis dataKey="y" type="number" domain={[0, 550]} />
             <Tooltip
               formatter={(value: number) => {
-                return [value, 'Accuracy', 's'];
+                return [value, 'WPM'];
               }}
               labelFormatter={(value: number) => {
                 return dayjs(new Date(value)).format('YYYY.MM.DD HH:mm:ss');
