@@ -39,7 +39,7 @@
     "fit-curve": "^0.2.0",
     "playwright": "^1.52.0",
     "postcss": "^8.4.23",
-    "tailwindcss": "^4.1.6",
+    "tailwindcss": "^4.1.7",
     "tree-kill": "^1.2.2"
   }
 }
