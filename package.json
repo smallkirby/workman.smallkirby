@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.6",
-    "@playwright/test": "^1.53.1",
+    "@playwright/test": "^1.53.2",
     "@tailwindcss/postcss": "^4.1.11",
     "firebase-admin": "^13.4.0",
     "firebase-tools": "^14.9.0",
