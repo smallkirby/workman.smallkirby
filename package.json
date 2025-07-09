@@ -31,7 +31,7 @@
     "typescript": "5.8.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.6",
+    "@biomejs/biome": "^2.1.1",
     "@playwright/test": "^1.53.2",
     "@tailwindcss/postcss": "^4.1.11",
     "firebase-admin": "^13.4.0",
