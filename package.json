@@ -35,7 +35,7 @@
     "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4.1.12",
     "firebase-admin": "^13.4.0",
-    "firebase-tools": "^14.12.1",
+    "firebase-tools": "^14.14.0",
     "fit-curve": "^0.2.0",
     "playwright": "^1.54.1",
     "postcss": "^8.5.6",
