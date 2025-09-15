@@ -16,7 +16,7 @@
     "@ant-design/icons": "^6.0.2",
     "@types/common-tags": "^1.8.4",
     "@types/node": "24.4.0",
-    "@types/react": "19.1.12",
+    "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "antd": "^5.27.3",
     "common-tags": "^1.8.2",
