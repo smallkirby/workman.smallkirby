@@ -18,7 +18,7 @@
     "@types/node": "24.5.1",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
-    "antd": "^5.27.3",
+    "antd": "^5.27.4",
     "common-tags": "^1.8.2",
     "dayjs": "^1.11.18",
     "dotenv": "^17.2.2",
