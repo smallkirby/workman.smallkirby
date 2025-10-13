@@ -15,7 +15,7 @@
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
     "@types/common-tags": "^1.8.4",
-    "@types/node": "24.7.1",
+    "@types/node": "24.7.2",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.1",
     "antd": "^5.27.4",
