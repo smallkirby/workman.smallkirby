@@ -20,7 +20,7 @@
     "@types/react-dom": "19.2.2",
     "antd": "^5.27.6",
     "common-tags": "^1.8.2",
-    "dayjs": "^1.11.18",
+    "dayjs": "^1.11.19",
     "dotenv": "^17.2.3",
     "firebase": "^12.5.0",
     "next": "15.5.6",
