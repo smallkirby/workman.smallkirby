@@ -37,7 +37,7 @@
     "firebase-admin": "^13.6.0",
     "firebase-tools": "^14.26.0",
     "fit-curve": "^0.2.0",
-    "playwright": "^1.56.0",
+    "playwright": "^1.57.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17",
     "tree-kill": "^1.2.2"
